@@ -3,6 +3,9 @@ let playerName = "";
 let steps = 0;
 let socket = null;
 
+// Replace with your Render backend URL (no trailing slash)
+const BASE_URL = "https://checkthenum-vgju.onrender.com";
+
 // ---------------------- FIREWORKS -----------------------
 function launchFireworks() {
     for (let i = 0; i < 20; i++) {
@@ -22,7 +25,7 @@ async function createGame() {
 
     const number = prompt("Enter a 4-digit number:");
 
-    const res = await fetch("http://127.0.0.1:8000/create_game", {
+    const res = await fetch(`${BASE_URL}/create_game`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ host_name: playerName, number })
@@ -32,7 +35,6 @@ async function createGame() {
     if (!data.game_id) return alert("Room creation failed!");
 
     gameId = data.game_id;
-
     document.getElementById("gameIdDisplay").innerText = gameId;
 
     connectWebSocket(gameId);
@@ -48,7 +50,7 @@ async function joinGame() {
 
     if (!playerName || !gameId) return alert("Fill name & game ID");
 
-    await fetch("http://127.0.0.1:8000/join_game", {
+    await fetch(`${BASE_URL}/join_game`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ game_id: gameId, player_name: playerName })
@@ -70,7 +72,7 @@ async function submitGuess() {
         return alert("Enter a valid 4-digit number!");
     }
 
-    const res = await fetch("http://127.0.0.1:8000/guess", {
+    const res = await fetch(`${BASE_URL}/guess`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
@@ -120,10 +122,9 @@ function showWinner() {
     setInterval(launchFireworks, 300);
 }
 
-
 // ---------------------- WEBSOCKET CHAT ---------------------
 function connectWebSocket(gameId) {
-    socket = new WebSocket(`ws://127.0.0.1:8000/ws/${gameId}`);
+    socket = new WebSocket(`wss://checkthenum-vgju.onrender.com/ws/${gameId}`);
 
     socket.onopen = () => console.log("WebSocket Connected ✔");
 
