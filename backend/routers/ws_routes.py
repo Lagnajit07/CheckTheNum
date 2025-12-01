@@ -3,9 +3,9 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from database.memory_db import connections
 
-router = APIRouter()
+router = APIRouter(prefix="/ws")  # <-- IMPORTANT
 
-@router.websocket("/ws/{game_id}")
+@router.websocket("/{game_id}")    # <-- simplified
 async def websocket_endpoint(websocket: WebSocket, game_id: str):
     await websocket.accept()
 
@@ -18,7 +18,6 @@ async def websocket_endpoint(websocket: WebSocket, game_id: str):
         while True:
             data = await websocket.receive_json()
 
-            # broadcast chat messages
             for ws in list(connections[game_id]):
                 try:
                     await ws.send_json(data)
