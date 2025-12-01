@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplayer Guess Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="setup" class="container">
+    <h2>Start / Join Game</h2>
+
+    <input id="playerName" placeholder="Enter your name">
+
+    <button onclick="createGame()">Create Room</button>
+
+    <input id="joinGameId" placeholder="Enter Game ID to join">
+    <button onclick="joinGame()">Join Game</button>
+</div>
+
+<div id="game" class="container" style="display:none;">
+    <h2>Game Room: <span id="gameIdDisplay"></span></h2>
+
+    <input id="guessInput" placeholder="Enter Your Guess (4 digits)">
+    <button onclick="submitGuess()">Submit Guess</button>
+
+    <table id="guessTable">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Guess</th>
+                <th>Correct Digits</th>
+                <th>Correct Positions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>Live Chat</h3>
+<div id="chatBox" class="chat-box"></div>
+
+<input id="chatInput" placeholder="Type message">
+<button onclick="sendChat()">Send</button>
+
+</div>
+
+<div id="winner" style="display:none;">
+    <h2>🎉 Winner: <span id="winnerName"></span></h2>
+    <p>Steps taken: <span id="stepsCount"></span></p>
+    <button onclick="restartGame()">Back / Restart Game</button>
+    <canvas id="fireworks"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

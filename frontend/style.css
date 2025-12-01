@@ -1,0 +1,270 @@
+/* body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 { margin: 20px 0; font-size: 3em; text-shadow: 2px 2px #000; }
+
+#setup, #game, #winPage {
+    background: rgba(0,0,0,0.6);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7); */
+/* } */
+
+/* Input row for alignment */
+/* .input-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.input-row input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    flex: 1;
+    font-size: 16px;
+    min-width: 120px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background: #ff6b6b;
+    color: #fff;
+    transition: 0.3s;
+}
+
+button:hover { background: #ff4757; transform: scale(1.05); } */
+
+/* Guess Table */
+/* #guessTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#guessTable th, #guessTable td {
+    padding: 10px;
+    border: 1px solid #fff;
+    text-align: center;
+    color: #fff;
+}
+
+#guessTable th {
+    background-color: rgba(0,0,0,0.3);
+} */
+
+/* Chat */
+/* #chatBox {
+    height: 150px;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 5px; */
+/* } */
+
+/* Win Page */
+/* #winPage { position: relative; }
+#fireworks { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
+@media screen and (max-width:600px){
+    h1 { font-size: 2em; }
+    .input-row { flex-direction: column; }
+    input, button { width: 90%; font-size: 14px; }
+} */
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 650px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00d9ff55;
+}
+
+input, button {
+    padding: 12px;
+    width: 90%;
+    margin: 10px auto;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+button {
+    background: #00c3ff;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+td, th {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+}
+
+#chatBox {
+    margin-top: 20px;
+    height: 180px;
+    overflow-y: auto;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+    text-align: left;
+}
+
+#winner {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: black;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 150px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Fireworks */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, white, transparent);
+    border-radius: 50%;
+    animation: explode 1s ease-out infinite;
+}
+
+@keyframes explode {
+    0% { transform: scale(0.2); opacity: 1; }
+    100% { transform: scale(8); opacity: 0; }
+}
+
+
+/* General layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+#setup, #game, #winPage {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Inputs and buttons */
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Game table */
+#guessTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#guessTable th, #guessTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Chat box */
+#chatBox {
+    border: 1px solid #ccc;
+    height: 150px;
+    overflow-y: auto;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+/* Fireworks canvas */
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #setup, #game, #winPage {
+        padding: 10px;
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #guessTable th, #guessTable td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    #chatBox {
+        height: 120px;
+    }
+}
