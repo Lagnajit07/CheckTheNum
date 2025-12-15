@@ -138,8 +138,8 @@ function showWinner() {
 // ---------------------- WEBSOCKET CHAT ---------------------
 function connectWebSocket(gameId) {
     try {
-        // socket = new WebSocket(`wss://checkthenum-vgju.onrender.com/ws/${gameId}`);
-        socket = new WebSocket(`https://checkthenum-vgju.onrender.com/${gameId}`);
+        socket = new WebSocket(`wss://checkthenum-vgju.onrender.com/ws/${gameId}`);
+        // socket = new WebSocket(`https://checkthenum-vgju.onrender.com/${gameId}`);
         
         socket.onopen = () => console.log("WebSocket Connected ✔");
 
